@@ -258,17 +258,19 @@ function convoyDetails(city) {
 
 
 
-    $(".CENTER").html(city);
+    $(".CENTER").html("<h1>Destination</h1><h2>"+city+"</h2>");
 
 
 
 }
 
 function windView(data){
-    var String = "<h3></h3><ul>";
+
+    var String = "<h1>"+ data[0].origin +"</h1><dl>";
+
     data.forEach(function(convoy){
-        String += "<li>" + convoy.id +"</li><li>" + convoy.distanceFromCityBorder + "</li><li>" + convoy.speedInKmPerHour + "</li><li>" + convoy.vehicles.length+ " vehicles</li>"
+        String += "<dt>Their Id</dt><dl>" + convoy.id +"</dl><dt>distance to travel</dt><dl>" + convoy.distanceFromCityBorder + "</dl><dt>traveling speed</dt><dl>" + convoy.speedInKmPerHour + "</dl><dt>amount of vehicles</dt><dl>" + convoy.vehicles.length+ " vehicles</dl><hr>"
     });
-    String += "</ul><p></p>";
-    return String;
+    String += "</dl>";
+    return String;1
 }
