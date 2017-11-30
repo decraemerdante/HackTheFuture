@@ -13,7 +13,7 @@ $(document).ready(function () {
         getCities();
         getConvoys();
 
-        updateCities("pinda","city");
+
 
     });
 
@@ -264,6 +264,7 @@ console.log(SE);
     $(".NE").html(NE.length);
     $(".NW").html(NW.length);
     $(".CENTER").html(city);
+
 
 
 
