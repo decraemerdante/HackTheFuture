@@ -52,7 +52,7 @@ function getCities() {
 function getConvoys() {
     $.ajax({
 
-        url: 'http://cunning-convoys.azurewebsites.net/api/convoys',
+        url: 'http://cunning-convoys.azurewebsites.net/api/Convoys',
         type: "GET",
         dataType: "json",
         data: {
@@ -82,9 +82,9 @@ function updateView(type){
             break;
 
     }
-    data.forEach(function (item) {
-        $("." + type + "").append("<li>" + item.name + "</li>");
-    })
+
+
+
 }
 
 function updateConvoysView() {
@@ -92,4 +92,19 @@ function updateConvoysView() {
     cities.forEach(function (convoy) {
         $(".convoys").append("<li>" + city.name + "</li>");
     })
+}
+
+
+function convoyDetails(city) {
+
+    var incoming = convoys.filter((function (item) {
+        if(item.destinationCity == city){
+            return item;
+        }
+    }));
+
+
+
+
+    
 }
