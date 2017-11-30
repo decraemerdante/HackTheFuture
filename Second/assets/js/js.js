@@ -6,10 +6,10 @@
 $(document).ready(function () {
 
 
-    $("nav").on("click", "div.HomeLink" ,function () {
+    $("nav").on("click", "a.HomeLink" ,function () {
         location.reload();
     });
-    $("nav").on("click", "div.UpdateLink" ,function () {
+    $("nav").on("click", "a.UpdateLink" ,function () {
         getCities();
         getConvoys();
 
@@ -50,6 +50,7 @@ function getCities() {
     });
 }
 function getConvoys() {
+
     $.ajax({
 
         url: 'http://cunning-convoys.azurewebsites.net/api/Convoys',
@@ -264,7 +265,7 @@ function convoyDetails(city) {
 }
 
 function windView(data){
-    var String = "<ul>";
+    var String = "<h3></h3><ul>";
     data.forEach(function(convoy){
         String += "<li>" + convoy.id +"</li><li>" + convoy.distanceFromCityBorder + "</li><li>" + convoy.speedInKmPerHour + "</li><li>" + convoy.vehicles.length+ " vehicles</li>"
     });
