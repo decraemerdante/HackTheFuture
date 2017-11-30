@@ -1,3 +1,10 @@
 .cityViewBlock{
     border: solid black 4px;
 }
+
+.convoyViewPart{
+    display: inline-block;
+    width: 31%;
+    height: 31%;
+    background-color: lightblue;
+}
