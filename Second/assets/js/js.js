@@ -1,18 +1,19 @@
 /**
  * Created by Panda on 30/11/2017.
  */
+
 var cities;
-
 $(document).ready(function () {
-    GetData();
-    showCityNames();
+    getCities();
 
-    console.log("test");
+
+
+
 
     $("#container").append("<p>test</p>");
 });
 
-function GetData() {
+function getCities() {
 
     $.ajax({
 
@@ -23,7 +24,7 @@ function GetData() {
             format: "json"
         },
         success: function (data) {
-          cities = data;
+         showCityNames(data)
         },
         error: function (xhr, message) {
             console.log(xhr, message);
@@ -33,7 +34,7 @@ function GetData() {
 
 }
 
-function showCityNames(){
+function showCityNames(cities){
     $("#container").append("<ul class='test'></ul>");
     cities.forEach(function (city) {
         $(".test").append("<li>" + city.name + "</li>");
