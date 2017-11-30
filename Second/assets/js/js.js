@@ -1,8 +1,11 @@
 /**
  * Created by Panda on 30/11/2017.
  */
+
 var cities;
 var convoys;
+
+
 
 $(document).ready(function () {
 
@@ -18,6 +21,7 @@ $(document).ready(function () {
     initPage();
     getCities();
     getConvoys();
+
 
 
 
@@ -38,8 +42,10 @@ function getCities() {
             format: "json"
         },
         success: function (data) {
+
             cities = data;
             updateCitiesView();
+
         },
         error: function (xhr, message) {
             console.log(xhr, message);
@@ -65,7 +71,9 @@ function getConvoys() {
     });
 }
 
+
 function updateCitiesView(){
+
     $("#container").append("<ul class='test'></ul>");
     cities.forEach(function (city) {
         $(".test").append("<li>" + city.name + "</li>");
