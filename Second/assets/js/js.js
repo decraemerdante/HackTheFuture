@@ -8,10 +8,25 @@ var convoys;
 
 
 $(document).ready(function () {
+
+    $("nav").on("click", "div.HomeLink" ,function () {
+        location.reload();
+    });
+    $("nav").on("click", "div.UpdateLink" ,function () {
+        getCities();
+        getConvoys();
+    });
+
+
+    initPage();
     getCities();
     getConvoys();
 
 });
+
+function initPage() {
+    $("nav").append("")
+}
 
 function getCities() {
 
