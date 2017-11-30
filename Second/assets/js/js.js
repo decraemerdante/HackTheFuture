@@ -51,7 +51,7 @@ function getCities() {
 function getConvoys() {
     $.ajax({
 
-        url: 'http://cunning-convoys.azurewebsites.net/api/convoys',
+        url: 'http://cunning-convoys.azurewebsites.net/api/Convoys',
         type: "GET",
         dataType: "json",
         data: {
@@ -82,6 +82,7 @@ function updateView(type){
             break;
 
     }
+
 }
 
 function calculateRelativePopulation(data) {
@@ -137,4 +138,19 @@ function updateCities(data,type) {
 
 function updateConvoy(data,type) {
 
+}
+
+
+function convoyDetails(city) {
+
+    var incoming = convoys.filter((function (item) {
+        if(item.destinationCity == city){
+            return item;
+        }
+    }));
+
+
+
+
+    
 }
