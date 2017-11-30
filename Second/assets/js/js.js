@@ -13,7 +13,7 @@ $(document).ready(function () {
         getCities();
         getConvoys();
 
-        updateCities("pinda","city");
+
 
     });
 
@@ -247,14 +247,7 @@ function convoyDetails(city) {
         }
     });
 
-console.log(SE);
-    console.log(SW);
-    console.log(S);
-    console.log(N);
-    console.log(NE);
-    console.log(NW);
-    console.log(E);
-    console.log(W);
+
 
 
 
