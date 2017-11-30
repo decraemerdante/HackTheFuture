@@ -3,14 +3,17 @@
  */
 
 var cities;
+var convoys;
+
+
+
 $(document).ready(function () {
     getCities();
+    getConvoys();
 
 
 
 
-
-    $("#container").append("<p>test</p>");
 });
 
 function getCities() {
@@ -24,23 +27,44 @@ function getCities() {
             format: "json"
         },
         success: function (data) {
-         showCityNames(data)
+
+            cities = data;
+            updateCitiesView();
+
         },
         error: function (xhr, message) {
             console.log(xhr, message);
         }
-
     });
+}
+function getConvoys() {
+    $.ajax({
 
+        url: 'http://cunning-convoys.azurewebsites.net/api/convoys',
+        type: "GET",
+        dataType: "json",
+        data: {
+            format: "json"
+        },
+        success: function (data) {
+            convoys = data;
+            updateConvoysView();
+        },
+        error: function (xhr, message) {
+            console.log(xhr, message);
+        }
+    });
 }
 
-function showCityNames(cities){
+
+function updateCitiesView(){
+
     $("#container").append("<ul class='test'></ul>");
     cities.forEach(function (city) {
         $(".test").append("<li>" + city.name + "</li>");
     })
 }
 
-function LoadData() {
+function updateConvoysView() {
     return "test";
 }
