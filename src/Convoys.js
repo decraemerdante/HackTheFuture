@@ -1,5 +1,12 @@
-import React, { Component } from 'react';
+/**
+ * Created by Panda on 30/11/2017.
+ */
 
+
+
+
+import React, { Component } from 'react';
+//import $ from 'jquery';
 
 
 class Convoys extends Component {
@@ -15,23 +22,40 @@ class Convoys extends Component {
     }
 
     ConvoyList() {
-        $.getJSON('http://cunning-convoys.azurewebsites.net/swagger/#!/Cities/ApiCitiesGet')
-            .then(({results}) => this.setState({person: results}));
-    }
+        /*
+         $.get('http://cunning-convoys.azurewebsites.net/api/convoys')
+         .then(({results}) => this.setState({convoy: results}));
+         */
+
+        this.setState({convoy: [
+            {
+                "id": "string",
+                "destinationCity": "string",
+                "distanceFromCityBorder": 0,
+                "speedInKmPerHour": 0,
+                "vehicles": [
+                    {
+                        "id": "string",
+                        "licensePlate": "string",
+                        "numberOfNomads": 0,
+                        "nomads": [
+                            {
+                                "firstName": "string",
+                                "lastName": "string"
+                            }
+                        ]
+                    }
+                ],
+                "origin": "string"
+            }
+        ] })
+
+        }
 
     render() {
         const convoys = this.state.convoy.map((item, i) => (
             <div>
-                <h1>{ item.name }</h1>
-                <p>
-                    { item.population }
-                </p>
-                <p>
-                    { item.area }
-                </p>
-                <p>
-                    { item.country }
-                </p>
+                <h1>{ item.name } { item.destinationCity}</h1>
             </div>
         ));
 
@@ -42,6 +66,13 @@ class Convoys extends Component {
         );
     }
 }
+
+export default Convoys;
+
+
+
+
+
 
 
 
