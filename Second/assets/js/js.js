@@ -206,8 +206,6 @@ function convoyDetails(city) {
 
     console.log(incoming);
 
-
-
     var NW = [];
     var N = [];
     var NE = [];
@@ -221,56 +219,55 @@ function convoyDetails(city) {
         switch(convoy.origin){
             case "SouthEast" :
                 SE.push(convoy);
+                $(".SE").html(windView(SE));
                 break;
             case"South" :
                 S.push(convoy);
+                $(".S").html(windView(S));
                 break;
             case"SouthWest" :
                 SW.push(convoy);
+                $(".SW").html(windView(SW));
                 break;
             case "North" :
                 N.push(convoy);
+                $(".N").html(windView(N));
                 break;
             case "NorthEast":
                 NE.push(convoy);
+                $(".NE").html(windView(NE));
                 break;
             case "NorthWest" :
                 NW.push(convoy);
+                $(".NW").html(windView(NW));
                 break;
             case "West":
                 W.push(convoy);
+                $(".W").html(windView(W));
                 break;
             case "East" :
                 E.push(convoy);
+                $(".E").html(windView(E));
                 break;
 
         }
     });
 
-console.log(SE);
-    console.log(SW);
-    console.log(S);
-    console.log(N);
-    console.log(NE);
-    console.log(NW);
-    console.log(E);
-    console.log(W);
-    $(".SE").html(SE.length);
-    $(".SW").html(SW.length);
-    $(".S").html(S.length);
-    $(".W").html(W.length);
-    $(".E").html(E.length);
-    $(".N").html(N.length);
-    $(".NE").html(NE.length);
-    $(".NW").html(NW.length);
+
+
+
+
     $(".CENTER").html(city);
 
 
 
+}
 
-
-
-
-
-    
+function windView(data){
+    var String = "<ul>";
+    data.forEach(function(convoy){
+        String += "<li>" + convoy.id +"</li><li>" + convoy.distanceFromCityBorder + "</li><li>" + convoy.speedInKmPerHour + "</li><li>" + convoy.vehicles.length+ " vehicles</li>"
+    });
+    String += "</ul><p></p>";
+    return String;
 }
