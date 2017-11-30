@@ -255,8 +255,15 @@ console.log(SE);
     console.log(NW);
     console.log(E);
     console.log(W);
-
-
+    $(".SE").html(SE.length);
+    $(".SW").html(SW.length);
+    $(".S").html(S.length);
+    $(".W").html(W.length);
+    $(".E").html(E.length);
+    $(".N").html(N.length);
+    $(".NE").html(NE.length);
+    $(".NW").html(NW.length);
+    $(".CENTER").html(city);
 
 
 
