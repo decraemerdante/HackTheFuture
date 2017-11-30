@@ -117,26 +117,41 @@ function updateCities(data,type) {
 
 
     cityview += type;
+    var chartTable = [];
+    data.forEach(function (city) {
+        chartTable.push([city.name, percentages[city.name]]);
+    });
 
     google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(function () {
         var circle = new google.visualization.DataTable();
         circle.addColumn('string', 'City');
         circle.addColumn('number', 'Percentage');
-        data.forEach(function (city) {
+        circle.addRows(chartTable);
 
 
-            circle.addRow([city.name, percentages[city.name]])
-
-        });
-        var options = {'title':'Relative Population',
-            'width':1200,
-            'height':800};
+        var options = {
+            'title': 'Relative Population',
+            'width': 1200,
+            'height': 800
+        };
 
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(circle, options);
-    });
 
+        function selectHandler() {
+            var selectedItem = chart.getSelection()[0];
+            if (selectedItem) {
+               convoyDetails(circle.getValue(selectedItem.row, 0));
+            }
+        }
+
+        // Listen for the 'select' event, and call my function selectHandler() when
+        // the user selects something on the chart.
+        google.visualization.events.addListener(chart, 'select', selectHandler);
+
+        chart.draw(circle, options);
+
+    });
 
 
 
@@ -178,10 +193,10 @@ function updateConvoy(data,type) {
 }
 
 
-function convoyDetails(e) {
+function convoyDetails(city) {
 
-console.log(e);
-    var city  = e.target.id;
+//console.log(e);
+    //var city  = e.target.id;
 
     var incoming = convoys.filter((function (item) {
         if(item.destinationCity == city){
@@ -190,6 +205,60 @@ console.log(e);
     }));
 
     console.log(incoming);
+
+
+
+    var NW = [];
+    var N = [];
+    var NE = [];
+    var W = [];
+    var E = [];
+    var SE = [];
+    var S = [];
+    var SW =[];
+
+    incoming.forEach(function (convoy) {
+        switch(convoy.origin){
+            case "SouthEast" :
+                SE.push(convoy);
+                break;
+            case"South" :
+                S.push(convoy);
+                break;
+            case"SouthWest" :
+                SW.push(convoy);
+                break;
+            case "North" :
+                N.push(convoy);
+                break;
+            case "NorthEast":
+                NE.push(convoy);
+                break;
+            case "NorthWest" :
+                NW.push(convoy);
+                break;
+            case "West":
+                W.push(convoy);
+                break;
+            case "East" :
+                E.push(convoy);
+                break;
+
+        }
+    });
+
+console.log(SE);
+    console.log(SW);
+    console.log(S);
+    console.log(N);
+    console.log(NE);
+    console.log(NW);
+    console.log(E);
+    console.log(W);
+
+
+
+
 
 
 
