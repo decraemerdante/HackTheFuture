@@ -11,9 +11,6 @@ $(document).ready(function () {
     getCities();
     getConvoys();
 
-
-
-
 });
 
 function getCities() {
@@ -29,7 +26,7 @@ function getCities() {
         success: function (data) {
 
             cities = data;
-            updateCitiesView();
+            updateView('cities');
 
         },
         error: function (xhr, message) {
@@ -48,7 +45,7 @@ function getConvoys() {
         },
         success: function (data) {
             convoys = data;
-            updateConvoysView();
+            updateView('convoys');
         },
         error: function (xhr, message) {
             console.log(xhr, message);
@@ -57,14 +54,27 @@ function getConvoys() {
 }
 
 
-function updateCitiesView(){
+function updateView(type){
 
-    $("#container").append("<ul class='test'></ul>");
-    cities.forEach(function (city) {
-        $(".test").append("<li>" + city.name + "</li>");
+    $("#container").append("<ul class='" + type + "'></ul>");
+    var data;
+    switch(type){
+        case 'cities' :
+            data = cities;
+            break;
+        case 'convoys' :
+            data = convoys;
+            break;
+
+    }
+    data.forEach(function (item) {
+        $("." + type + "").append("<li>" + item.name + "</li>");
     })
 }
 
 function updateConvoysView() {
-    return "test";
+    $("#container").append("<ul class='conoys'></ul>");
+    cities.forEach(function (convoy) {
+        $(".convoys").append("<li>" + city.name + "</li>");
+    })
 }
